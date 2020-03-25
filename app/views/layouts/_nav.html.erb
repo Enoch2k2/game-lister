@@ -1,0 +1,11 @@
+<nav>
+  <%= link_to "Home", root_path %>
+  <ul>
+    <% unless user_signed_in? %>
+      <li><%= link_to "Create Account", new_user_registration_path %></li>
+      <li><%= link_to "Log In", new_user_session_path %></li>
+    <% else %>
+
+    <% end %>
+  </ul>
+</nav>
