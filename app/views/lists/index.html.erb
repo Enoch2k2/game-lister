@@ -1,0 +1,8 @@
+<h1><%= @game.name %> Lists</h1>
+<%= link_to "Create List", new_game_list_path(@game) %><br/><br/>
+
+<div class="collection">
+  <% @lists.each do |list| %>
+    <%= link_to list.name, game_list_path(@game, list), class: "collection-item" %>
+  <% end %>
+</div>

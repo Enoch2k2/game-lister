@@ -1,0 +1,22 @@
+<h1>My Games</h1>
+
+<table class="striped">
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Lists
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.name %></td>
+        <td><%= link_to "View", game_lists_path(game) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

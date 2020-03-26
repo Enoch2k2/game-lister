@@ -1,0 +1,34 @@
+<h1><%= @game.name %> - <%= @list.name %></h1>
+
+<h3>Create Item</h3>
+
+<%= form_for([@game, @list, @list_item]) do |f| %>
+  <%= f.hidden_field :list_id %>
+
+  <div class="input-field">
+    <%= f.text_field :quantity %>
+    <%= f.label :quantity %><br/>
+  </div>
+  <h5>Select Item</h5>
+  
+  <div class="input-field">
+    <%= f.collection_select :item_id, @game.items, :id, :name, prompt: true %>
+  </div>
+  <h5>Or Create Item</h5>
+  <%= f.fields_for :item, @game.items.build do |i| %>
+    <div class="input-field">
+      <%= i.text_field :name %>
+      <%= i.label :name %><br/>
+    </div>
+
+    <%= i.hidden_field :game_id %>
+  <% end %>
+
+  <%= f.submit "Create List Item", class: "btn" %>
+<% end %>
+
+<script>
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>

@@ -1,0 +1,22 @@
+<h1>Games</h1>
+
+<table class="striped">
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Owned?
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.name %></td>
+        <td><%= current_user.games.include?(game) ? "Yes" : link_to("Add Game", add_game_path(user_game: {user_id: current_user.id, game_id: game.id})) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
