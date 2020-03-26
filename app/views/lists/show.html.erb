@@ -1,6 +1,7 @@
 <h1><%= @game.name %> - <%= @list.name %></h1>
 
-<%= link_to "Add Item", new_game_list_list_item_path(@game, @list) %><br/><br/>
+<%= link_to "Add Item", new_game_list_list_item_path(@game, @list) %>
+<%= link_to "Delete List", game_list_path(@game, @list), method: :delete%><br/><br/>
 
 <table class="striped">
   <thead>

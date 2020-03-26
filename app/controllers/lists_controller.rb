@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_game
   before_action :set_user_game, only: [:index, :new, :create]
-  before_action :set_list, only: [:show]
+  before_action :set_list, only: [:show, :destroy]
 
   def index
     @lists = @user_game.lists
@@ -24,6 +24,17 @@ class ListsController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    if @list
+      @list.destroy
+      flash[:notice] = "#{@list.name} has been deleted."
+    else
+      flash[:notice] = "List doesn't exist"
+    end
+
+    redirect_to game_lists_path(@game)
   end
 
   private
